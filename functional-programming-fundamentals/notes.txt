@@ -75,3 +75,62 @@ Function applications (Math - Haskell):
   - composition: f(g(x)) => (f.g)x = f.g
 
 Script files for defining own functions => .hs file
+
+Unit tests in OOP => setup -> run tests -> tear down everything
+  (to run method it needs to live in context)
+vs QuickCheck - isolation of life, no need for global state
+
+Because of lazy evaluation => take n [1..] => essential for compositional expressions
+
+Infix operator creation with back quotes
+
+[Naming conventions]  
+PascalCase = typenames
+camelCase = variables and functions
+
+Hungarian notation => if number => x; if list => xs; if flatten => xss
+
+[Types]
+  - name for collection of related values => Bool => 2 logical values: False/True
+  - expression evaluation (expr e produces value of type t) => e :: t
+  - by type inference every expression has type auto calculated on compilation
+    - type errors found in compile time (safer and faster)
+  BCL Types: Bool, Char, String, Int, Integer, Float
+  List => sequence of values of same type
+    - ['a','c','s'] :: [Char]
+    - [1,2,3,4] :: [Int] => same constructors "[" and "]" for type and value
+    - list of arbitraty types allowed also: [[[Char]]]
+  Tuples => (1,True,'c') :: (Int,Bool,Char)
+
+  Function Types
+    - mapping from values of one type to values of another type:
+    - not :: Bool -> Bool
+    - isDigit :: Char -> Bool
+    - ex. \x -> ...x...:: t1 -> t2
+    - vs C#:
+      1. Func<T> => () -> T
+      2. Func<S,T> => S -> T
+      3. Action<T> => T -> () //makes sense if "IO ()" in Monads
+
+    - actions with pair arguments
+      add :: (Int, Int) -> Int
+    - curryed actions (Higher order function - takes argument one by one): 
+      add :: Int -> (Int -> Int) 
+        ex.
+          add x y = x+y
+          add' x = \y -> x+y
+          add'' = \x -> (\y -> x+y)
+
+          mult x y z = x*y*z
+          mult :: Int -> (Int -> (Int -> Int))
+
+    - Type construction (arrow) is right associative:
+        int -> int -> int -> int -> int (is same as) int -> (int -> (int -> int))
+    - Function application is associate to left!:
+        mult x y z = ((mult x)y)z
+
+Why currying?
+  - partial applying => f ::int -> int -> int (now apply 5)
+                    => f5 :: int -> int
+                    => (f5)3 :: int
+                    => f 5 3 :: int
