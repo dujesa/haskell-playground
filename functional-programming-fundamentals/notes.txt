@@ -1,0 +1,77 @@
+In FP its easier to address goals: 
+  1. reusable code, 
+  2. highly abstraction 
+  3. formal verification (spec sharp/code contracts)
+
+FP is "petradish" => easier to test ideas and import them into oop languages.
+
+What is FP?
+  Programming with mathematical functions! 
+    => With Haskell you are forced to not cheat 
+    => provides more clear result
+
+Imperative vs Functional => sum[1..10]
+  BENEFITS of FP:
+  - composed of expressions => each subexpression is indepented of its context
+  - testable & lookable separate and than can be used to compose it together
+    in some higher
+    
+History: 
+  - Lambda calculus from 30s, Theory of functions
+  - Lisp in 50s, but has mutable state, depends on Von Neumann arch.
+  - ISWIM (Peter Landin) in 60s - pure functional language
+    - DSL => you can define semantics of DSL in Functional language
+  - 70s FP language => HOF & reasoning about programming
+  - ML - 1st modern FL - type inference, polymorphic types/generic
+  - *David Turner* - Miranda system - lazy FPL
+    - SKI combinators
+    - added types in FP => errors dissapear and compiles fetches them
+      - static typing when possible vs dynamic when neccessery
+      - Scheme is dynamically typed but currently adding types and contracts
+  - in 87 Haskell => standard for lazy, purelly FPL
+    - directlly inspired LINQ, C#, F#,...
+
+Pure lazy FP, example:
+  Quick sort
+    f [] = []
+    f (x:xs) = f ys ++ [x] ++ f zs
+               where
+                  ys = [a | a <- xs, a <= x]
+                  zs = [b | b <- xs, b > x]
+
+
+Lect.2
+Functions from Prelude <=> BCL
+  - head [1, 2, 3, 4] => 1
+  - [1, 2, 3, 4] !! 2 => 3
+  - tail [1, 2, 3, 4] => [2, 3, 4]
+  - take 2 [1, 2, 3, 4] => [1, 2] 
+  - drop 2 [1, 2, 3, 4] => [2, 3, 4]
+  - sum []
+  - length []
+  - product [2,3,4] => 12
+  - reverse []
+  - [1,2,3] ++ [3,4,5] => [1,2,3,3,4,5]
+
+
+C#: RECEIVER.method(a, b, c) => receiver most important
+Haskell: METHOD receiver a b c => dynamic dispatch/pattern matching
+  based on dynamic type you try to call different method
+
+Everything is done on LIST
+
+Fluent programming in OOP cause IDE drives you, in FP its all on you.
+In maths => Operator you use the most you give it least space, ex. dot
+In haskel => function application => space 
+  (takes least space and binds most/highest priority - noiceless syntax)
+  ex. f a b + c*d
+
+Function applications (Math - Haskell):
+  - f(x) => f x
+  - f(x,y) => f x y
+  - f(g(x)) => f (g x)
+  - f(x,g(y)) => f x (g y)
+  - f(x)g(z) => f x * g y
+  - composition: f(g(x)) => (f.g)x = f.g
+
+Script files for defining own functions => .hs file
