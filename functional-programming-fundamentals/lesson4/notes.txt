@@ -1,0 +1,75 @@
+Conditional expressions
+  ex. signum n = if n < 0 then -1 else
+                    if n == 0 then 0 else 1
+
+Guarded Equations - alternative to conditionals
+  ex. abs n | n >= 0 = n
+            | otherwise = -n
+
+  - guard parts are
+    - | n >= 0 
+    - | otherwise
+  - usefull for multiple cases of conditionals, easier to read, pushes guard 
+    to left and result condition to right
+
+Pattern matching
+  - clear definition
+  - dynamic dispatch in OOP
+  - pr. types
+    not :: Bool -> Bool
+      not False = True
+      not True = False
+  - (&&) :: Bool -> Bool -> Bool
+      True && True = True
+        ...
+      True && x = True, x == True
+                = False, x == False
+  - using wildcard
+      True && b = b
+      False && _ = False
+
+  - values of type Bool: True, False, bottom
+
+  [List patterns]
+    [1,2,3,4] :: [int] <-is same as-> 1:(2:(3:(4:[])))
+    - cons operator
+
+    head :: [a] -> a
+    head (a:_) = a, this function is currently partial because no pattern matches [], 
+      result is non terminating function (bottom)
+      - ofter non terminating computation is error (beacuse result delays/never returns)
+
+    tail :: [a] -> [a]
+
+  DEPRICATED => [n+k patterns] - patterns over integers
+    predecessor (n+1) = n 
+
+  [Lambda expression]
+    Int -> Int
+    \x -> x+x
+  Why lambda? 
+  1.> give formal meaning to functions defined using currying
+    ex. add x y = x+y
+        add x = \y -> x+y
+        add = \x -> (\y -> x+y)
+  2.> defining functions that return functions as result
+    ex. const x = \_ -> x
+  3.> to avoid naming functions that are only referenced once
+    ex. Simplify
+      odds n = map f [0..n-1]
+               where
+                 f x = x*2 + 1
+      To
+
+      odds n = map (\x -> x*2+1) [0..n-1]
+  
+  [Sections]
+    1 + 2 === (+) 1 2
+    Binary operator can be written between => sectioned and partially applied
+    This can be go further tith one argument of the operator included in the parenthees
+    (1+) === \x -> 1+x
+
+    ex. (1+) - successor function
+        (1/) - reciprocation function
+        (*2) - doubling function
+        (/2) - halving function

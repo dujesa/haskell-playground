@@ -134,3 +134,24 @@ Why currying?
                     => f5 :: int -> int
                     => (f5)3 :: int
                     => f 5 3 :: int
+
+Polymorphic functions
+  - length :: [a] -> Int (list of arbitrary types as input)
+  - fst :: (a,b) -> a
+  - zip :: [a] -> [b] -> [(a,b)]
+  - id :: a -> a 
+  - head :: [a] -> a
+  - take :: Int -> [a] -> [a]
+
+Classes
+  - sum :: Num a => [a] -> a
+  Num means that a is constraint to Num typeclass
+  
+  Built in typeclasses/interfaces
+    - Num = numeric type
+    - Eq = equality type
+    - Ord = ordered types
+
+    ex. (+) :: Num a => a -> a -> a
+        (==) :: Eq a => a -> a -> Bool
+        (<) :: Ord a => a -> a -> Bool
