@@ -1,0 +1,8 @@
+Use cases for zip:
+  - w/ zip define function that returns all positions of a value in list
+
+  - to provide indexes to list
+    index xs = zip [0..] xs
+
+  - linqWhere xs p = filter (zip [0..] xs) p
+  - countLowerCase xs = length [x | x <- xs, isLower x]
